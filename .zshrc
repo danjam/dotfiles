@@ -107,10 +107,5 @@ source $ZSH/oh-my-zsh.sh
 source ~/.bash_aliases
 source ~/.autoexec
 
-source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-ZSH_HIGHLIGHT_STYLES[path]=bg=grey
-ZSH_HIGHLIGHT_STYLES[path_prefix]=bg-grey
-
 # added by travis gem
 [ -f /home/dannyjames/.travis/travis.sh ] && source /home/dannyjames/.travis/travis.sh
