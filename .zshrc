@@ -56,8 +56,8 @@ ZSH_THEME="danjam"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$ZSH/custom
-
+#ZSH_CUSTOM=$ZSH/custom
+ZSH_CUSTOM=~/.zsh_custom
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
