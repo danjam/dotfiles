@@ -1,0 +1,111 @@
+changePHP() {
+    if [ -z "$1" ]
+    then
+        php -v
+    elif [ $1 = "list" ]
+    then
+	ls /etc/php
+    else
+        sudo update-alternatives --set php /usr/bin/php$1
+	sudo update-alternatives --set phar /usr/bin/phar$1
+	sudo update-alternatives --set phar.phar /usr/bin/phar.phar$1
+	sudo update-alternatives --set phpize /usr/bin/phpize$1
+	sudo update-alternatives --set php-config /usr/bin/php-config$1
+    fi
+}
+
+migrationsMigrate() {
+    if [ -e app/console ]
+    then
+        echo 'Updating DEV'
+        app/console doctrine:migrations:migrate -n
+
+        echo 'Updating TEST'
+        app/console doctrine:migrations:migrate -n -e test
+    else
+        echo "Console not found. Invalid directory?"
+        return 1
+    fi
+}
+
+licenseVenue() {
+    if [ -z "$1" ]
+    then
+        echo "No venue id supplied"
+        return 1
+    elif [ -e app/console ]
+    then
+        for license in enterprise location presence network filtering
+        do 
+            app/console sp:developer:grant-license $license $1
+        done
+    else
+        echo "Console not found. Invalid directory?"
+        return 1
+    fi
+}
+
+exportVenue() {
+    if [ -z "$1" ]
+    then
+        echo "No venue id supplied"
+        return 1
+    else
+        app/console sp:access:export-splashpages --scopeType SPVenueBundle:Venue --scopeId $1
+    fi
+}
+
+exportCompany() {
+    if [ -z "$1" ]
+    then
+        echo "No company id supplied"
+        return 1
+    else
+        app/console sp:access:export-splashpages --scopeType SPCompanyBundle:Company --scopeId $1
+    fi
+}
+
+stopServices() {
+    sudo service nginx stop
+
+    sudo service mysql stop
+
+    sudo service php5.6-fpm stop
+    sudo service php7.0-fpm stop
+    sudo service php7.1-fpm stop
+    sudo service php7.2-fpm stop
+    sudo service php7.3-fpm stop
+
+    sudo service redis-server stop
+}
+
+strtServices() {
+    sudo service nginx start
+
+    sudo service mysql start
+
+    sudo service php5.6-fpm start
+    sudo service php7.0-fpm start
+    sudo service php7.1-fpm start
+    sudo service php7.2-fpm start
+    sudo service php7.3-fpm start
+
+    sudo service redis-server start
+}
+
+
+alias stahp=stopServices
+alias startservices=strtServices
+alias phpver=changePHP
+alias dmm=migrationsMigrate
+alias lv=licenseVenue
+alias ev=exportVenue
+alias ec=exportCompany
+alias fakemail="sudo java -jar ~/jar/fakeSMTP-2.0.jar"
+
+alias updatewip="git checkout wip && git pull origin master && git push --no-verify"
+
+alias ll='ls -lA'
+
+alias zshrc='${=EDITOR} ~/.zshrc'
+
