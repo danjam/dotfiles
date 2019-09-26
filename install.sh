@@ -16,4 +16,4 @@ if [ ! -L ~/.config/terminator ]; then
   ln -s ~/.dotfiles/.config/terminator ~/.config/terminator
 fi
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/.zsh_custom/plugins/zsh-autosuggestions
