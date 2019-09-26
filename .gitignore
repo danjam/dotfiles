@@ -1,3 +1,3 @@
-/.zsh_custom/themes/*
-!/.zsh_custom/themes/.gitkeep
+/.zsh_custom/plugins/*
+!/.zsh_custom/plugins/.gitkeep
 *.pyc
