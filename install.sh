@@ -12,8 +12,6 @@ if [ ! -L ~/.zsh_custom ]; then
   ln -s ~/.dotfiles/.zsh_custom ~/.zsh_custom
 fi
 
-
-#ln -s ~/.dotfiles/.zshrc ~/.zshrc
-#ln -s ~/.dotfiles/.aliases ~/.aliases
-#ln -s ~/.dotfiles/.zsh_custom ~/.zsh_custom
-
+if [ ! -L ~/.custom/terminator ]; then
+  ln -s ~/.dotfiles/.config/terminator ~/.config/terminator
+fi
