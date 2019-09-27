@@ -1,19 +1,25 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ ! -L ~/.zshrc ]; then
-  ln -s ~/.dotfiles/.zshrc ~/.zshrc
+homedir=$HOME
+scriptdir="${0%/*}"
+
+symlinks=( .zshrc .aliases .zsh_custom .config/terminator )
+
+for symlink in ${symlinks[@]}
+do
+  if [ ! -L $HOME/$symlink ]
+  then
+    echo Linking $HOME/$symlink
+    ln -s $scriptdir/$symlink $HOME/$symlink
+  else
+    echo \'$scriptdir/$symlink\' could not be linked as \'$HOME/$symlink\' already exists
+  fi
+done
+
+if [ ! -d $scriptdir/.zsh_custom/plugins/zsh-autosuggestions ] || [ -z "$(ls -A $scriptdir/.zsh_custom/plugins/zsh-autosuggestions)"  ]
+then
+  echo Cloning zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-autosuggestions $scriptdir/.zsh_custom/plugins/zsh-autosuggestions
+else
+  echo Cannot clone 'zsh-autosuggestions' as '$scriptdir/.zsh_custom/plugins/zsh-autosuggestions' already exists and is not empty
 fi
-
-if [ ! -L ~/.aliases ]; then
-  ln -s ~/.dotfiles/.aliases ~/.aliases
-fi
-
-if [ ! -L ~/.zsh_custom ]; then
-  ln -s ~/.dotfiles/.zsh_custom ~/.zsh_custom
-fi
-
-if [ ! -L ~/.config/terminator ]; then
-  ln -s ~/.dotfiles/.config/terminator ~/.config/terminator
-fi
-
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/.zsh_custom/plugins/zsh-autosuggestions
