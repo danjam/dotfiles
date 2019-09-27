@@ -107,9 +107,8 @@ PROMPT_EOL_MARK=''
 # includes
 
 source $ZSH/oh-my-zsh.sh
-source ~/.aliases
+source ~/.aliases_shared
+source ~/.aliases_local
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/vault vault
 
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM

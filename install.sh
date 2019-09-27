@@ -1,7 +1,7 @@
 #!/bin/bash
 
-scriptdir="${0%/*}"
-symlinks=( .zshrc .aliases .zsh_custom .config/terminator )
+scriptdir="$( realpath $( dirname $0 ) )"
+symlinks=( .zshrc .aliases_shared .zsh_custom .config/terminator )
 
 # check for zsh
 if [ ! -n "`$SHELL -c 'echo $ZSH_VERSION'`" ];
@@ -23,6 +23,10 @@ do
     echo \'$scriptdir/$symlink\' could not be linked as \'$HOME/$symlink\' already exists
   fi
 done
+
+#add local aliases file
+echo Adding .aliases_local
+touch $HOME/.aliases_local
 
 # clone plugins
 if [ ! -d $scriptdir/.zsh_custom/plugins/zsh-autosuggestions ] || [ -z "$(ls -A $scriptdir/.zsh_custom/plugins/zsh-autosuggestions)"  ]
