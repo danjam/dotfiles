@@ -1,7 +1,7 @@
 #!/bin/bash
 
 scriptdir="$( realpath $( dirname $0 ) )"
-symlinks=( .zshrc .aliases_shared .zsh_custom .config/terminator )
+symlinks=( .zshrc .aliases_shared .zsh_custom .nanorc .config/terminator )
 
 # check for zsh
 if [ ! -n "`$SHELL -c 'echo $ZSH_VERSION'`" ];
