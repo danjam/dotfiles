@@ -53,6 +53,9 @@ fi
 ln -sf "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 echo "Symlinked ~/.zshrc -> $DOTFILES/zsh/.zshrc"
 
+ln -sf "$DOTFILES/nano/.nanorc" "$HOME/.nanorc"
+echo "Symlinked ~/.nanorc -> $DOTFILES/nano/.nanorc"
+
 if [ ! -f "$HOME/.zsh_aliases" ]; then
   cat > "$HOME/.zsh_aliases" <<'EOF'
 # Machine-local aliases — this file is sourced by .zshrc but not tracked in dotfiles.
