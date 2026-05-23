@@ -12,27 +12,6 @@ exec zsh
 
 Re-run `install.sh` to update plugins and tools.
 
-## Layout
-
-```
-~/dotfiles/
-  install.sh
-  .secrets.example
-  nano/
-    .nanorc                          # symlinked to ~/.nanorc
-  zsh/
-    .zshrc                           # symlinked to ~/.zshrc
-    conf.d/
-      00-path.zsh                    # PATH, NVM_DIR, bun
-      10-exports.zsh                 # environment variables
-      20-options.zsh                 # shell options
-      30-aliases.zsh                 # aliases
-      40-functions.zsh               # functions
-      45-fzf.zsh                     # fzf shell integration
-      50-zoxide.zsh                  # zoxide init
-      55-highlighting.zsh            # syntax-highlighting overrides
-```
-
 ## conf.d
 
 `.zshrc` sources every `*.zsh` file in `conf.d/` in lexicographic order. Numbered prefixes guarantee load order. Gaps leave room to insert files without renumbering.
