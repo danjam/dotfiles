@@ -1,3 +1,1 @@
-/.zsh_custom/plugins/*
-!/.zsh_custom/plugins/.gitkeep
-*.pyc
+.secrets

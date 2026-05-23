@@ -1,38 +1,74 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -eu
 
-scriptdir="$( realpath $( dirname $0 ) )"
-symlinks=( .zshrc .aliases_shared .zsh_custom .nanorc .config/terminator )
+DOTFILES="$HOME/dotfiles"
 
-# check for zsh
-if [ ! -n "`$SHELL -c 'echo $ZSH_VERSION'`" ];
-then
-  echo Exiting, ZSH  does not appear to be installed or is not the default shell
-  exit 1
-else
-  echo Detected ZSH
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "Installing Oh My Zsh..."
+  RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# symlink files
-for symlink in ${symlinks[@]}
-do
-  if [ ! -e $HOME/$symlink ]
-  then
-    echo Linking $HOME/$symlink
-    ln -s $scriptdir/$symlink $HOME/$symlink
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+plugins=(
+  "zsh-users/zsh-autosuggestions"
+  "zsh-users/zsh-syntax-highlighting"
+  "Aloxaf/fzf-tab"
+  "zsh-users/zsh-completions"
+)
+
+for plugin in "${plugins[@]}"; do
+  name="${plugin##*/}"
+  dest="$ZSH_CUSTOM/plugins/$name"
+  if [ -d "$dest" ]; then
+    echo "Updating $name..."
+    git -C "$dest" pull --ff-only || echo "Warning: failed to update $name, skipping"
   else
-    echo \'$scriptdir/$symlink\' could not be linked as \'$HOME/$symlink\' already exists
+    echo "Installing $name..."
+    git clone "https://github.com/$plugin" "$dest"
   fi
 done
 
-#add local aliases file
-echo Adding .aliases_local
-touch $HOME/.aliases_local
-
-# clone plugins
-if [ ! -d $scriptdir/.zsh_custom/plugins/zsh-autosuggestions ] || [ -z "$(ls -A $scriptdir/.zsh_custom/plugins/zsh-autosuggestions)"  ]
-then
-  echo Cloning zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-autosuggestions $scriptdir/.zsh_custom/plugins/zsh-autosuggestions
+if [ -d "$HOME/.fzf" ]; then
+  echo "Updating fzf..."
+  git -C "$HOME/.fzf" pull --ff-only || echo "Warning: failed to update fzf, skipping"
 else
-  echo Cannot clone 'zsh-autosuggestions' as '$scriptdir/.zsh_custom/plugins/zsh-autosuggestions' already exists and is not empty
+  echo "Installing fzf..."
+  git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+  "$HOME/.fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish
 fi
+
+if ! command -v zoxide &>/dev/null; then
+  echo "Installing zoxide..."
+  curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+else
+  echo "zoxide already installed, skipping"
+fi
+
+if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+  echo "Backing up existing .zshrc to .zshrc.bak"
+  cp "$HOME/.zshrc" "$HOME/.zshrc.bak"
+fi
+
+ln -sf "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
+echo "Symlinked ~/.zshrc -> $DOTFILES/zsh/.zshrc"
+
+if [ ! -f "$HOME/.zsh_aliases" ]; then
+  cat > "$HOME/.zsh_aliases" <<'EOF'
+# Machine-local aliases — this file is sourced by .zshrc but not tracked in dotfiles.
+# Add aliases specific to this machine here.
+EOF
+  echo "Created ~/.zsh_aliases for machine-local aliases"
+else
+  echo "~/.zsh_aliases already exists, skipping"
+fi
+
+if [ ! -f "$HOME/.secrets" ]; then
+  cp "$DOTFILES/.secrets.example" "$HOME/.secrets"
+  chmod 600 "$HOME/.secrets"
+  echo "Created ~/.secrets from template — edit it with your actual values"
+else
+  echo "~/.secrets already exists, skipping"
+fi
+
+echo "Done. Run 'exec zsh' to reload."
