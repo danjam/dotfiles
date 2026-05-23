@@ -1,11 +1,12 @@
 # CLAUDE.md
 
-Danny's dotfiles repo. Zsh + Oh My Zsh on WSL2.
+Personal dotfiles repo. Zsh + Oh My Zsh on WSL2.
 
 ## Structure
 
 - `zsh/.zshrc` is symlinked to `~/.zshrc` — keep it minimal (omz setup, conf.d loop, secrets source)
 - `zsh/conf.d/*.zsh` files are sourced in order by numbered prefix
+- `nano/.nanorc` is symlinked to `~/.nanorc`
 - `~/.secrets` holds credentials and is never committed
 - `~/.zsh_aliases` holds machine-local aliases and is never committed
 - `install.sh` automates setup and updates — idempotent, safe to re-run anytime
@@ -43,3 +44,4 @@ Danny's dotfiles repo. Zsh + Oh My Zsh on WSL2.
 - Keep `.zshrc` thin — put config in the appropriate `conf.d/` file
 - When adding third-party plugins, add them to both `.zshrc` plugins array and `install.sh` plugins array
 - When adding external tools, guard their init in conf.d with `command -v` so dotfiles work on machines without them
+- When adding new config files, follow the `tool/.configfile` directory convention (e.g. `nano/.nanorc`, `zsh/.zshrc`)
