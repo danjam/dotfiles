@@ -1,2 +1,6 @@
 ZSH_HIGHLIGHT_STYLES[path]='none'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=gray'
