@@ -43,6 +43,13 @@ else
   "$HOME/.fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish
 fi
 
+if ! command -v oh-my-posh &>/dev/null; then
+  echo "Installing Oh My Posh..."
+  curl -s https://ohmyposh.dev/install.sh | bash -s
+else
+  echo "Oh My Posh already installed, skipping"
+fi
+
 if ! command -v zoxide &>/dev/null; then
   echo "Installing zoxide..."
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh

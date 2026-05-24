@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="kafeitu"
+ZSH_THEME=""
 zstyle ':omz:plugins:nvm' lazy yes
 plugins=(git zsh-autosuggestions sudo history-substring-search dirhistory fzf-tab nvm zsh-completions docker docker-compose tailscale)
 # zsh-syntax-highlighting must be last
@@ -11,6 +11,7 @@ for conf in "$HOME/dotfiles/zsh/conf.d/"*.zsh(N); do
   source "$conf"
 done
 
+eval "$(oh-my-posh init zsh --config "$HOME/dotfiles/omp/danjam.omp.json")"
 
 [[ -f ~/.secrets ]] && source ~/.secrets
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
