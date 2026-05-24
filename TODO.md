@@ -3,11 +3,9 @@
 - [x] ~~Install Consolas Nerd Font on Windows~~ No longer needed — using plain unicode
 - [x] ~~Pick an Oh My Posh theme~~ Built custom theme (omp/danjam.omp.json)
 - [x] Install Oh My Posh
-- [ ] Create palette file (05-palette.zsh) based on chosen theme colours
-- [ ] Customise syntax highlighting colours using palette
-- [ ] Customise autosuggestion colour using palette 
-- [ ] Configure fzf colours using palette
-- [ ] Configure FZF_DEFAULT_OPTS layout
+- [x] Customise syntax highlighting colours
+- [x] Configure autosuggestion strategy
+- [ ] Configure fzf colours and layout
 - [ ] Configure fzf-tab previews
 
 ## Notes
