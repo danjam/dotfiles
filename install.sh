@@ -3,6 +3,11 @@ set -eu
 
 DOTFILES="$HOME/dotfiles"
 
+if ! command -v zsh &>/dev/null; then
+  echo "Error: zsh is not installed. Please install zsh and re-run."
+  exit 1
+fi
+
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   echo "Installing Oh My Zsh..."
   RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -74,4 +79,13 @@ else
   echo "~/.secrets already exists, skipping"
 fi
 
+echo ""
 echo "Done. Run 'exec zsh' to reload."
+
+optional=()
+command -v bat &>/dev/null || optional+=(bat)
+command -v eza &>/dev/null || optional+=(eza)
+if [ ${#optional[@]} -gt 0 ]; then
+  echo ""
+  echo "For enhanced fzf previews, consider installing: ${optional[*]}"
+fi
