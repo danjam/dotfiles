@@ -1,4 +1,2 @@
-export EMBEDDING_BATCH_SIZE=100
-export MILVUS_ADDRESS="127.0.0.1:19530"
 export EDITOR="nano"
 export LESS="-RFX"
