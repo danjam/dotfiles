@@ -2,12 +2,12 @@
 
 export FZF_DEFAULT_OPTS="--color=info:yellow:reverse --preview-window='border-line'"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range :300 {} 2>/dev/null || cat {}'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always --level=2 {} 2>/dev/null || ls {}'"
+export FZF_ALT_C_OPTS="--preview 'eza -la --git --color=always {} 2>/dev/null || ls {}'"
 
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:*' fzf-flags --color=info:yellow:reverse --preview-window='border-line'
 zstyle ':fzf-tab:*' fzf-min-height 20
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always --level=2 $realpath 2>/dev/null || ls $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -la --git --color=always $realpath 2>/dev/null || ls $realpath'
 zstyle ':fzf-tab:complete:(cat|bat|less|head|tail|nano|vim):*' fzf-preview 'bat --color=always --style=numbers --line-range :50 $realpath 2>/dev/null || cat $realpath 2>/dev/null'
 zstyle ':fzf-tab:complete:(kill|pkill|ps):argument-rest' fzf-preview 'ps -p $word -o pid,user,%cpu,%mem,cmd --no-headers 2>/dev/null'
 zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview 'git log --color=always --oneline -20 $word 2>/dev/null'
