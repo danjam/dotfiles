@@ -5,6 +5,7 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-ran
 export FZF_ALT_C_OPTS="--preview 'eza -la --git --color=always {} 2>/dev/null || ls {}'"
 
 zstyle ':completion:*' menu no
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':fzf-tab:*' fzf-flags --color=info:yellow:reverse --preview-window='border-line'
 zstyle ':fzf-tab:*' fzf-min-height 20
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -la --git --color=always $realpath 2>/dev/null || ls $realpath'
