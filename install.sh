@@ -43,19 +43,11 @@ else
   "$HOME/.fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish
 fi
 
-if ! command -v oh-my-posh &>/dev/null; then
-  echo "Installing Oh My Posh..."
-  curl -s https://ohmyposh.dev/install.sh | bash
-else
-  echo "Oh My Posh already installed, skipping"
-fi
+echo "Installing/updating Oh My Posh..."
+curl -s https://ohmyposh.dev/install.sh | bash
 
-if ! command -v zoxide &>/dev/null; then
-  echo "Installing zoxide..."
-  curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-else
-  echo "zoxide already installed, skipping"
-fi
+echo "Installing/updating zoxide..."
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
   echo "Backing up existing .zshrc to .zshrc.bak"
