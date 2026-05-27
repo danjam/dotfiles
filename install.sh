@@ -36,7 +36,7 @@ done
 
 if [ -d "$HOME/.fzf" ]; then
   echo "Updating fzf..."
-  git -C "$HOME/.fzf" pull --ff-only || echo "Warning: failed to update fzf, skipping"
+  git -C "$HOME/.fzf" pull --ff-only && "$HOME/.fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish || echo "Warning: failed to update fzf, skipping"
 else
   echo "Installing fzf..."
   git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
