@@ -41,6 +41,10 @@ Custom Oh My Posh theme (`omp/danjam.omp.json`). Sky blue path and git info, tea
 | Up/Down | History substring search |
 | Esc Esc | Prepend sudo |
 
+## Tmux
+
+Config at `tmux/.tmux.conf`, symlinked to `~/.tmux.conf`. Prefix is `Ctrl+a`. Mouse support, 10k scrollback, true color, 1-based indexing, clean status bar.
+
 ## Local files (not tracked)
 
 - `~/.secrets` — credentials (created from `.secrets.example`)

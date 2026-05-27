@@ -8,6 +8,7 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 - `zsh/conf.d/*.zsh` files are sourced in order by numbered prefix
 - `omp/danjam.omp.json` — Oh My Posh prompt theme
 - `nano/.nanorc` is symlinked to `~/.nanorc`
+- `tmux/.tmux.conf` is symlinked to `~/.tmux.conf`
 - `~/.secrets` holds credentials and is never committed
 - `~/.zsh_aliases` holds machine-local aliases and is never committed
 - `install.sh` automates setup and updates — idempotent, safe to re-run anytime
