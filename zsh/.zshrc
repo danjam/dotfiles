@@ -14,7 +14,7 @@ for conf in "$DOTFILES/zsh/conf.d/"*.zsh(N); do
   source "$conf"
 done
 
-command -v oh-my-posh &>/dev/null && eval "$(oh-my-posh init zsh --config "$DOTFILES/omp/danjam.omp.json")"
+[[ -x "$HOME/.local/bin/oh-my-posh" ]] && eval "$(oh-my-posh init zsh --config "$DOTFILES/omp/danjam.omp.json")"
 
 [[ -f ~/.secrets ]] && source ~/.secrets
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
