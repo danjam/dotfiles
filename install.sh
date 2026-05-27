@@ -81,6 +81,16 @@ else
   echo "~/.zsh_aliases already exists, skipping"
 fi
 
+if [ ! -f "$HOME/.zsh_local" ]; then
+  cat > "$HOME/.zsh_local" <<'EOF'
+# Machine-local environment — this file is sourced by .zshrc but not tracked in dotfiles.
+# Add PATH entries, exports, and other config specific to this machine here.
+EOF
+  echo "Created ~/.zsh_local for machine-local environment"
+else
+  echo "~/.zsh_local already exists, skipping"
+fi
+
 if [ ! -f "$HOME/.secrets" ]; then
   cp "$DOTFILES/.secrets.example" "$HOME/.secrets"
   chmod 600 "$HOME/.secrets"

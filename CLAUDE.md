@@ -11,6 +11,7 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 - `tmux/.tmux.conf` is symlinked to `~/.tmux.conf`
 - `~/.secrets` holds credentials and is never committed
 - `~/.zsh_aliases` holds machine-local aliases and is never committed
+- `~/.zsh_local` holds machine-local environment (PATH, exports) and is never committed
 - `install.sh` automates setup and updates — idempotent, safe to re-run anytime
 
 ## conf.d layout

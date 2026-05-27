@@ -16,3 +16,4 @@ command -v oh-my-posh &>/dev/null && eval "$(oh-my-posh init zsh --config "$HOME
 
 [[ -f ~/.secrets ]] && source ~/.secrets
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
+[[ -f ~/.zsh_local ]] && source ~/.zsh_local

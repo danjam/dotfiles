@@ -49,3 +49,4 @@ Config at `tmux/.tmux.conf`, symlinked to `~/.tmux.conf`. Prefix is `Ctrl+a`. Mo
 
 - `~/.secrets` — credentials (created from `.secrets.example`)
 - `~/.zsh_aliases` — machine-local aliases
+- `~/.zsh_local` — machine-local environment (PATH, exports)
