@@ -25,7 +25,7 @@
           "type": "git",
           "style": "plain",
           "foreground": "#89B4FA",
-          "template": " <darkGray>·</> ⎇ {{ .HEAD }}{{ if or .Working.Changed .Staging.Changed }} <darkGray>·</> (+{{ .Working.Added }},−{{ .Working.Deleted }}){{ end }}",
+          "template": " <darkGray>·</> ⎇ {{ .HEAD }}{{ if .Working.Changed }}*{{ end }}{{ if .Staging.Changed }}+{{ end }}",
           "properties": {
             "fetch_status": true,
             "branch_icon": ""
