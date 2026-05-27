@@ -1,4 +1,4 @@
-[[ "$PWD" = /mnt/* ]] && cd ~
+[[ -o login && "$PWD" = /mnt/* ]] && cd ~
 
 setopt HIST_REDUCE_BLANKS
 setopt NOBEEP
