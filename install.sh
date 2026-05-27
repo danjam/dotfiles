@@ -45,7 +45,7 @@ fi
 
 if ! command -v oh-my-posh &>/dev/null; then
   echo "Installing Oh My Posh..."
-  curl -s https://ohmyposh.dev/install.sh | bash -s
+  curl -s https://ohmyposh.dev/install.sh | bash
 else
   echo "Oh My Posh already installed, skipping"
 fi
