@@ -16,7 +16,7 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 ## conf.d layout
 
-- `00-path.zsh` — PATH, bun
+- `00-path.zsh` — PATH
 - `10-exports.zsh` — environment variables (EDITOR, LESS)
 - `20-options.zsh` — shell options (WSL auto-cd to ~)
 - `30-aliases.zsh` — aliases (ll uses eza when available)
