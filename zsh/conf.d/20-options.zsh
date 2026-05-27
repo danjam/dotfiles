@@ -9,5 +9,8 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
+setopt EXTENDED_GLOB
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT
+
+autoload -U zmv
