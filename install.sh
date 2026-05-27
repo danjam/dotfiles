@@ -99,9 +99,6 @@ else
   echo "~/.secrets already exists, skipping"
 fi
 
-echo ""
-echo "Done. Run 'exec zsh' to reload."
-
 optional=()
 command -v bat &>/dev/null || optional+=(bat)
 command -v eza &>/dev/null || optional+=(eza)
@@ -109,3 +106,6 @@ if [ ${#optional[@]} -gt 0 ]; then
   echo ""
   echo "For enhanced fzf previews, consider installing: ${optional[*]}"
 fi
+
+echo ""
+echo "Done. Run 'exec zsh' to reload."
