@@ -3,7 +3,7 @@ DOTFILES="$HOME/dotfiles"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
-plugins=(git zsh-autosuggestions sudo history-substring-search dirhistory fzf-tab nvm zsh-completions docker docker-compose tailscale)
+plugins=(git zsh-autosuggestions sudo history-substring-search dirhistory fzf-tab zsh-completions docker docker-compose tailscale)
 # zsh-syntax-highlighting must be last
 plugins+=(zsh-syntax-highlighting)
 

@@ -16,7 +16,7 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 ## conf.d layout
 
-- `00-path.zsh` — PATH, NVM_DIR, bun
+- `00-path.zsh` — PATH, bun
 - `10-exports.zsh` — environment variables (EDITOR, LESS)
 - `20-options.zsh` — shell options (WSL auto-cd to ~)
 - `30-aliases.zsh` — aliases (ll uses eza when available)
@@ -27,7 +27,7 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 ## Plugins
 
-**Built-in omz:** git, sudo, history-substring-search, dirhistory, nvm, docker, docker-compose, tailscale
+**Built-in omz:** git, sudo, history-substring-search, dirhistory, docker, docker-compose, tailscale
 
 **Third-party (cloned by install.sh):** zsh-autosuggestions, zsh-syntax-highlighting, fzf-tab, zsh-completions
 
