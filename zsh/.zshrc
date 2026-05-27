@@ -1,4 +1,5 @@
 [[ -d /opt/homebrew/share/zsh/site-functions ]] && fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+[[ -d /usr/local/share/zsh/site-functions ]] && fpath=(/usr/local/share/zsh/site-functions $fpath)
 DOTFILES="$HOME/dotfiles"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
