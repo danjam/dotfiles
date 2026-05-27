@@ -3,6 +3,7 @@ path=(
   /usr/local/go/bin
   $path
 )
+[[ -d /opt/homebrew/bin ]] && path=(/opt/homebrew/bin $path)
 typeset -U PATH path
 
 export NVM_DIR="$HOME/.nvm"
