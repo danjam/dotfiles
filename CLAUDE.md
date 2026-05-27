@@ -27,13 +27,13 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 ## Plugins
 
-**Built-in omz:** git, sudo, history-substring-search, dirhistory, nvm (lazy-loaded), docker, docker-compose, tailscale
+**Built-in omz:** git, sudo, history-substring-search, dirhistory, nvm, docker, docker-compose, tailscale
 
 **Third-party (cloned by install.sh):** zsh-autosuggestions, zsh-syntax-highlighting, fzf-tab, zsh-completions
 
 **zsh-syntax-highlighting must be last** — loaded via `plugins+=()` on a separate line.
 
-**Plugin pre-config goes in `.zshrc`** not conf.d — it must be set before omz loads (e.g. nvm lazy, autosuggest strategy).
+**Plugin pre-config goes in `.zshrc`** not conf.d — it must be set before omz loads (e.g. autosuggest strategy).
 
 ## External tools (installed by install.sh)
 

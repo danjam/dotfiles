@@ -14,7 +14,7 @@ Re-run `install.sh` to update plugins and tools.
 
 ## What gets installed
 
-**Plugins (via omz):** git, sudo, history-substring-search, dirhistory, nvm (lazy-loaded), docker, docker-compose, tailscale, zsh-autosuggestions, zsh-syntax-highlighting, fzf-tab, zsh-completions
+**Plugins (via omz):** git, sudo, history-substring-search, dirhistory, nvm, docker, docker-compose, tailscale, zsh-autosuggestions, zsh-syntax-highlighting, fzf-tab, zsh-completions
 
 **Tools:** fzf, zoxide, Oh My Posh
 
