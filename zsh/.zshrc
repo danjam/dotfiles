@@ -20,6 +20,6 @@ command -v oh-my-posh &>/dev/null && eval "$(oh-my-posh init zsh --config "$DOTF
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 [[ -f ~/.zsh_local ]] && source ~/.zsh_local
 
-git -C "$DOTFILES" diff --quiet zsh/.zshrc 2>/dev/null || print -P "%F{red}Warning: .zshrc has local changes — if this is due to installer additions, move them to ~/.zsh_local%f"
+[[ -o interactive ]] && { git -C "$DOTFILES" diff --quiet zsh/.zshrc 2>/dev/null || print -P "%F{red}Warning: .zshrc has local changes — if this is due to installer additions, move them to ~/.zsh_local%f"; }
 
 # --- END OF CONFIG --- Anything below was added by an installer and should be moved to ~/.zsh_local
