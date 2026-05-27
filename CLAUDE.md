@@ -24,6 +24,7 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 - `45-fzf.zsh` — fzf shell integration, previews, fzf-tab config
 - `50-zoxide.zsh` — zoxide init (guarded)
 - `55-highlighting.zsh` — syntax-highlighting style overrides
+- `60-iterm2.zsh` — iTerm2 shell integration (guarded)
 
 ## Plugins
 
