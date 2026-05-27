@@ -37,7 +37,7 @@
           "foreground": "#CBA6F7",
           "template": " <darkGray>|</> {{ .FormattedMs }}",
           "properties": {
-            "threshold": 0
+            "threshold": 500
           }
         }
       ]
