@@ -1,5 +1,13 @@
 [[ -o login && "$PWD" = /mnt/* ]] && cd ~
 
+HISTSIZE=50000
+SAVEHIST=50000
+
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT
