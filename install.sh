@@ -3,10 +3,12 @@ set -euo pipefail
 
 DOTFILES="$HOME/dotfiles"
 
-if ! command -v zsh &>/dev/null; then
-  echo "Error: zsh is not installed. Please install zsh and re-run."
-  exit 1
-fi
+for cmd in zsh git curl; do
+  if ! command -v "$cmd" &>/dev/null; then
+    echo "Error: $cmd is not installed. Please install it and re-run."
+    exit 1
+  fi
+done
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   echo "Installing Oh My Zsh..."
@@ -46,7 +48,7 @@ else
 fi
 
 echo "Installing/updating Oh My Posh..."
-curl -s https://ohmyposh.dev/install.sh | bash
+curl -fsSL https://ohmyposh.dev/install.sh | bash
 
 echo "Installing/updating zoxide..."
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
