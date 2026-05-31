@@ -9,7 +9,7 @@ fi
 
 if command -v eza &>/dev/null; then
   alias ls='eza'
-  alias ll='eza -la --git'
+  alias ll='eza -la --git --header'
 else
   alias ll='ls -lhA'
 fi
