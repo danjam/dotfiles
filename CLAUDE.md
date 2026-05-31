@@ -13,6 +13,8 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 - `~/.zsh_aliases` holds machine-local aliases and is never committed
 - `~/.zsh_local` holds machine-local environment (PATH, exports) and is never committed
 - `install.sh` automates setup and updates — idempotent, safe to re-run anytime
+- `lint.sh` — shellcheck (bash files) and zsh -n (zsh files)
+- `LICENSE` — MIT
 
 ## conf.d layout
 
@@ -59,3 +61,4 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 - When adding external tools, guard their init in conf.d with `command -v` so dotfiles work on machines without them
 - When adding new config files, follow the `tool/.configfile` directory convention (e.g. `nano/.nanorc`, `zsh/.zshrc`)
 - No backslash line continuations in shell config — keep each command on a single line
+- Run `./lint.sh` before committing
