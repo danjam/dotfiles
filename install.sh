@@ -37,12 +37,12 @@ done
 
 if [ -d "$HOME/.fzf" ]; then
   echo "Updating fzf..."
-  git -C "$HOME/.fzf" pull --ff-only && "$HOME/.fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish || echo "Warning: failed to update fzf, skipping"
+  git -C "$HOME/.fzf" pull --ff-only && "$HOME/.fzf/install" --bin || echo "Warning: failed to update fzf, skipping"
 else
   echo "Installing fzf..."
   git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
-  # --no-update-rc: don't modify shell rc files — we source fzf.zsh in conf.d
-  "$HOME/.fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish
+  # --bin: binary only, shell integration comes from `fzf --zsh` in conf.d
+  "$HOME/.fzf/install" --bin
 fi
 
 echo "Installing/updating Oh My Posh..."
@@ -51,20 +51,15 @@ curl -s https://ohmyposh.dev/install.sh | bash
 echo "Installing/updating zoxide..."
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
-# Only back up if .zshrc is a real file, not already our symlink
-if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
-  echo "Backing up existing .zshrc to .zshrc.bak"
-  cp "$HOME/.zshrc" "$HOME/.zshrc.bak"
-fi
+link_dotfile() {
+  [ -e "$2" ] && [ ! -L "$2" ] && { cp "$2" "$2.bak"; echo "Backed up $2 -> $2.bak"; }
+  ln -sf "$1" "$2"
+  echo "Symlinked $2 -> $1"
+}
 
-ln -sf "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
-echo "Symlinked ~/.zshrc -> $DOTFILES/zsh/.zshrc"
-
-ln -sf "$DOTFILES/nano/.nanorc" "$HOME/.nanorc"
-echo "Symlinked ~/.nanorc -> $DOTFILES/nano/.nanorc"
-
-ln -sf "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
-echo "Symlinked ~/.tmux.conf -> $DOTFILES/tmux/.tmux.conf"
+link_dotfile "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
+link_dotfile "$DOTFILES/nano/.nanorc" "$HOME/.nanorc"
+link_dotfile "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
 if [ ! -f "$HOME/.zsh_aliases" ]; then
   cat > "$HOME/.zsh_aliases" <<'EOF'

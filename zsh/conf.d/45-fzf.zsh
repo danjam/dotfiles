@@ -1,4 +1,4 @@
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+command -v fzf &>/dev/null && eval "$(fzf --zsh)"
 
 export FZF_DEFAULT_OPTS="--color=info:yellow:reverse --preview-window='border-line'"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range :300 {} 2>/dev/null || cat {}'"
