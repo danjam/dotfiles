@@ -1,3 +1,4 @@
+# Disable path underlining
 ZSH_HIGHLIGHT_STYLES[path]='none'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
 ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=cyan'

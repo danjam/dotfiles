@@ -4,7 +4,9 @@ export FZF_DEFAULT_OPTS="--color=info:yellow:reverse --preview-window='border-li
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range :300 {} 2>/dev/null || cat {}'"
 export FZF_ALT_C_OPTS="--preview 'eza -la --git --color=always {} 2>/dev/null || ls {}'"
 
+# Disable default menu so fzf-tab takes over
 zstyle ':completion:*' menu no
+# Case-insensitive tab completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':fzf-tab:*' fzf-flags --color=info:yellow:reverse --preview-window='border-line'
 zstyle ':fzf-tab:*' fzf-min-height 20
