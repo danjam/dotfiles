@@ -18,6 +18,7 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 - `00-path.zsh` — PATH
 - `10-exports.zsh` — environment variables (EDITOR, LESS)
+- `15-claude.zsh` — Claude Code environment variables
 - `20-options.zsh` — shell options (WSL auto-cd to ~)
 - `30-aliases.zsh` — aliases (ll uses eza when available)
 - `40-functions.zsh` — custom functions

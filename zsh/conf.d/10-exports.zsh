@@ -1,3 +1,2 @@
 export EDITOR="nano"
 export LESS="-RFX"
-export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY="1"
