@@ -3,6 +3,8 @@
 [[ -d /usr/local/share/zsh/site-functions ]] && fpath=(/usr/local/share/zsh/site-functions $fpath)
 DOTFILES="$HOME/dotfiles"
 export ZSH="$HOME/.oh-my-zsh"
+# Must be set before omz runs compinit
+export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump"
 # Disabled — Oh My Posh handles the prompt
 ZSH_THEME=""
 # Must be set before omz loads the plugin

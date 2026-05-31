@@ -61,6 +61,9 @@ link_dotfile "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 link_dotfile "$DOTFILES/nano/.nanorc" "$HOME/.nanorc"
 link_dotfile "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
+echo "Ensuring XDG directories exist..."
+mkdir -p "$HOME/.local/state/zsh" "$HOME/.local/state/less" "$HOME/.local/state/wget" "$HOME/.cache/zsh"
+
 if [ ! -f "$HOME/.zsh_aliases" ]; then
   cat > "$HOME/.zsh_aliases" <<'EOF'
 # Machine-local aliases — this file is sourced by .zshrc but not tracked in dotfiles.
