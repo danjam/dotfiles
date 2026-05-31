@@ -18,7 +18,8 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 ## conf.d layout
 
-- `00-path.zsh` — PATH
+- `00-path.zsh` — PATH (~/.local/bin, ~/.fzf/bin guarded, homebrew guarded)
+- `05-xdg.zsh` — XDG relocations (HISTFILE, LESSHISTFILE, WGET_HSTS_FILE, DOCKER_CONFIG)
 - `10-exports.zsh` — environment variables (EDITOR, LESS)
 - `15-claude.zsh` — Claude Code environment variables
 - `20-options.zsh` — shell options, history config, extended glob, zmv
@@ -37,11 +38,11 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 **zsh-syntax-highlighting must be last** — loaded via `plugins+=()` on a separate line.
 
-**Plugin pre-config goes in `.zshrc`** not conf.d — it must be set before omz loads (e.g. autosuggest strategy).
+**Plugin pre-config goes in `.zshrc`** not conf.d — it must be set before omz loads (e.g. autosuggest strategy, ZSH_COMPDUMP).
 
 ## External tools (installed by install.sh)
 
-- **fzf** — cloned to `~/.fzf`, provides Ctrl+R/Ctrl+T/Alt+C
+- **fzf** — cloned to `~/.fzf`, binary in `~/.fzf/bin`, provides Ctrl+R/Ctrl+T/Alt+C
 - **zoxide** — installed to `~/.local/bin`, provides `z`/`zi` commands
 - **Oh My Posh** — installed to `~/.local/bin`, prompt theme engine
 
@@ -49,6 +50,17 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 - **bat** — aliased to `cat`, syntax-highlighted fzf previews (falls back to cat)
 - **eza** — aliased to `ls`/`ll`, fzf directory previews (falls back to ls)
+
+## XDG relocations
+
+State and cache files are moved out of `$HOME` root into XDG-standard locations:
+- `~/.local/state/zsh/history` — zsh history (was `~/.zsh_history`)
+- `~/.local/state/less/history` — less search history (was `~/.lesshst`)
+- `~/.local/state/wget/hsts` — wget HSTS data (was `~/.wget-hsts`)
+- `~/.cache/zsh/zcompdump` — completion cache (was `~/.zcompdump-*`)
+- `~/.config/docker` — Docker config/plugins (was `~/.docker`)
+
+`install.sh` creates the required directories. On existing machines, manually move the old files after pulling (see commit message for details).
 
 ## Rules
 
