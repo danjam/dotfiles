@@ -54,7 +54,7 @@
           "foreground_templates": [
             "{{ if gt .Code 0 }}red{{ end }}"
           ],
-          "template": "➜  ",
+          "template": "{{ if .Root }}#{{ else }}${{ end }} ➜  ",
           "properties": {
             "always_enabled": true
           }
@@ -63,7 +63,7 @@
     }
   ],
   "transient_prompt": {
-    "template": "➜  ",
+    "template": "{{ if .Root }}#{{ else }}${{ end }} ➜  ",
     "foreground": "green",
     "foreground_templates": [
       "{{ if gt .Code 0 }}red{{ end }}"
