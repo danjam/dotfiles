@@ -10,6 +10,7 @@ fi
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   echo "Installing Oh My Zsh..."
+  # RUNZSH=no: don't launch zsh after install; KEEP_ZSHRC=yes: don't overwrite our .zshrc
   RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
@@ -40,6 +41,7 @@ if [ -d "$HOME/.fzf" ]; then
 else
   echo "Installing fzf..."
   git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+  # --no-update-rc: don't modify shell rc files — we source fzf.zsh in conf.d
   "$HOME/.fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish
 fi
 
@@ -49,6 +51,7 @@ curl -s https://ohmyposh.dev/install.sh | bash
 echo "Installing/updating zoxide..."
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
+# Only back up if .zshrc is a real file, not already our symlink
 if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
   echo "Backing up existing .zshrc to .zshrc.bak"
   cp "$HOME/.zshrc" "$HOME/.zshrc.bak"
