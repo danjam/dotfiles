@@ -71,7 +71,7 @@ if [ ! -f "$HOME/.zsh_aliases" ]; then
 EOF
   echo "Created ~/.zsh_aliases for machine-local aliases"
 else
-  echo "~/.zsh_aliases already exists, skipping"
+  echo "$HOME/.zsh_aliases already exists, skipping"
 fi
 
 if [ ! -f "$HOME/.zsh_local" ]; then
@@ -81,7 +81,7 @@ if [ ! -f "$HOME/.zsh_local" ]; then
 EOF
   echo "Created ~/.zsh_local for machine-local environment"
 else
-  echo "~/.zsh_local already exists, skipping"
+  echo "$HOME/.zsh_local already exists, skipping"
 fi
 
 if [ ! -f "$HOME/.secrets" ]; then
@@ -89,7 +89,7 @@ if [ ! -f "$HOME/.secrets" ]; then
   chmod 600 "$HOME/.secrets"
   echo "Created ~/.secrets from template — edit it with your actual values"
 else
-  echo "~/.secrets already exists, skipping"
+  echo "$HOME/.secrets already exists, skipping"
 fi
 
 optional=()
