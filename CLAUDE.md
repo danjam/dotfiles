@@ -19,8 +19,8 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 - `00-path.zsh` — PATH
 - `10-exports.zsh` — environment variables (EDITOR, LESS)
 - `15-claude.zsh` — Claude Code environment variables
-- `20-options.zsh` — shell options (WSL auto-cd to ~)
-- `30-aliases.zsh` — aliases (ll uses eza when available)
+- `20-options.zsh` — shell options, history config, extended glob, zmv
+- `30-aliases.zsh` — guarded aliases (cd/cdi→zoxide, cat→bat, ls/ll→eza)
 - `40-functions.zsh` — custom functions
 - `45-fzf.zsh` — fzf shell integration, previews, fzf-tab config
 - `50-zoxide.zsh` — zoxide init (guarded)
@@ -45,8 +45,8 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 
 ## Optional tools (not installed by install.sh)
 
-- **bat** — syntax-highlighted file previews in fzf (falls back to cat)
-- **eza** — enhanced directory listings in fzf and ll alias (falls back to ls)
+- **bat** — aliased to `cat`, syntax-highlighted fzf previews (falls back to cat)
+- **eza** — aliased to `ls`/`ll`, fzf directory previews (falls back to ls)
 
 ## Rules
 
