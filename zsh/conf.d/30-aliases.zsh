@@ -13,3 +13,5 @@ if command -v eza &>/dev/null; then
 else
   alias ll='ls -lhA'
 fi
+
+alias sysupdate='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean'
