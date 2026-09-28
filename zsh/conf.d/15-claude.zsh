@@ -4,3 +4,5 @@ export CLAUDE_CODE_SHELL="$(command -v zsh)"
 export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY="1"
 # Use full 24-bit color in tmux instead of 256-color fallback
 export CLAUDE_CODE_TMUX_TRUECOLOR="1"
+# Script Claude Code runs before each Bash command; a wrong path fails silently
+export CLAUDE_ENV_FILE="$DOTFILES/claude/claude-env.zsh"

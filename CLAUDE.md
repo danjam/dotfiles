@@ -9,11 +9,12 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 - `omp/danjam.omp.json` — Oh My Posh prompt theme
 - `nano/.nanorc` is symlinked to `~/.nanorc`
 - `tmux/.tmux.conf` is symlinked to `~/.tmux.conf`
+- `claude/claude-env.zsh` is run by Claude Code before each Bash tool command (via `CLAUDE_ENV_FILE`), not symlinked. Changes take effect in new Claude sessions
 - `~/.secrets` holds credentials and is never committed
 - `~/.zsh_aliases` holds machine-local aliases and is never committed
 - `~/.zsh_local` holds machine-local environment (PATH, exports) and is never committed
 - `install.sh` automates setup and updates — idempotent, safe to re-run anytime
-- `lint.sh` — shellcheck (bash files) and zsh -n (zsh files)
+- `lint.sh` — shellcheck (bash files) and zsh -n (zsh files, including `claude/claude-env.zsh`)
 - `LICENSE` — MIT
 
 ## conf.d layout
@@ -21,7 +22,7 @@ Personal dotfiles repo. Zsh + Oh My Zsh on WSL2/macOS.
 - `00-path.zsh` — PATH (~/.local/bin, ~/.fzf/bin guarded, homebrew guarded)
 - `05-xdg.zsh` — XDG relocations (HISTFILE, LESSHISTFILE, WGET_HSTS_FILE, DOCKER_CONFIG)
 - `10-exports.zsh` — environment variables (EDITOR, LESS)
-- `15-claude.zsh` — Claude Code environment variables
+- `15-claude.zsh` — Claude Code environment variables, including `CLAUDE_ENV_FILE`
 - `20-options.zsh` — shell options, history config, extended glob, zmv
 - `30-aliases.zsh` — guarded aliases (cd/cdi→zoxide, cat→bat, ls/ll→eza)
 - `40-functions.zsh` — custom functions
@@ -68,6 +69,7 @@ State and cache files are moved out of `$HOME` root into XDG-standard locations:
 - Never use `sed -i` on dotfiles — use the Edit tool or write the file directly
 - Back up any file before replacing or deleting it
 - Test changes by launching a new zsh shell (`zsh -i -c '...'`) before claiming they work
+- For `claude/claude-env.zsh`, test in a new Claude session instead: have its Bash tool run `[[ -o nomatch ]] || echo off; echo =====` (the file only loads when a Bash command runs)
 - Keep `.zshrc` thin — put config in the appropriate `conf.d/` file
 - When adding third-party plugins, add them to both `.zshrc` plugins array and `install.sh` plugins array
 - When adding external tools, guard their init in conf.d with `command -v` so dotfiles work on machines without them

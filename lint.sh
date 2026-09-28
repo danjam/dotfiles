@@ -16,6 +16,7 @@ zsh -n zsh/.zshrc || failed=1
 for f in zsh/conf.d/*.zsh; do
   zsh -n "$f" || failed=1
 done
+zsh -n claude/claude-env.zsh || failed=1
 
 if [ "$failed" -ne 0 ]; then
   echo "Lint failed"
